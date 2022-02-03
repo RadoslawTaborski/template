@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary navbar-fixed-top">
+  <div class="container">
+    <a href=""><img src="../../../assets/favicon.png" width="50" height="50" alt="Icon"></a>
+    <a class="navbar-brand" href="">{{appName}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ng-container *ngIf="!isAuthenticated">
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav ms-md-auto">
+          <li class="nav-item">
+            <a class="nav-link" (click)="login()" href="javascript:void(0)" data-toggle="collapse"
+              data-target=".navbar-collapse.show">{{'root.header.login'|translate}}</a>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="isAuthenticated">
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/demo/" data-toggle="collapse"
+              data-target=".navbar-collapse.show">{{'root.header.demo'|translate}}</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-md-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+              aria-expanded="true">{{userName}}<span class="caret"></span></a>
+            <div class="dropdown-menu" aria-labelledby="download">
+              <a class="nav-link" (click)="signout()" href="javascript:void(0)" data-toggle="collapse"
+              data-target=".navbar-collapse.show">{{'root.header.logout'|translate}}</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+  </div>
+</nav>
