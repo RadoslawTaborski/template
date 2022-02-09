@@ -26,8 +26,11 @@ export class AuthService {
       this.subscribeevents();
     });
     if(this.user == null){
-      this.manager.signinSilent().then((x: any)=>this.router.navigate([environment.authConfig.redirect_component_signin])).catch((x: any)=>this.login())
-      this._authNavStatusSource.next(this.isAuthenticated());
+      const component = '/'+window.location.href.split('/').pop();
+      if(component !==environment.authConfig.redirect_component_register ){
+        this.manager.signinSilent().then((x: any)=>this.router.navigate([environment.authConfig.redirect_component_signin])).catch((x: any)=>this.login())
+        this._authNavStatusSource.next(this.isAuthenticated());
+      }
     }
   }
 

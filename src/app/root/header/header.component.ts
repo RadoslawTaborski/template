@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.translate.get('root.header.shopping').subscribe(t=>{
+    this.translate.get('root.header.demo').subscribe(t=>{ //TODO:
       this.subscription = this.authService.authNavStatus$.subscribe(status => {
         this.isAuthenticated = status
         this.userName = this.authService.name;
